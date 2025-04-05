@@ -1,2 +1,0 @@
-# crypto-manager
-crypto-manager
