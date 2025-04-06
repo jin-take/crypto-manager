@@ -1,0 +1,43 @@
+version: "3.9"
+services:
+  db:
+    build: ./db
+    container_name: myapp-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    container_name: myapp-backend
+    restart: unless-stopped
+    environment:
+      - PORT=8080
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=root
+      - DB_PASSWORD=secret
+      - DB_NAME=myapp
+    depends_on:
+      - db
+    expose:
+      - "8080"
+
+  frontend:
+    build: ./frontend
+    container_name: myapp-frontend
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  nginx:
+    build: ./nginx
+    container_name: myapp-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+
+volumes:
+  db-data:
