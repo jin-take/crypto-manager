@@ -1,0 +1,82 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 4rem; 
+  border-radius: 16px;
+  width: 70%;
+  max-width: 90vw;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.modal-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.modal-row label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.modal-row input,
+.modal-row select,
+.modal-row textarea {
+  font-size: 1.3rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-weight: normal;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.modal-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.modal-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.modal-row label {
+  margin-bottom: 0.5rem;
+  font-weight: 400; /* 細文字 */
+  font-size: 1.3rem;
+  color: #555; /* 濃いグレー */
+}

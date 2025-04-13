@@ -1,9 +1,13 @@
-FROM golang:1.24.2 AS builder
-WORKDIR /src
-COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o /app ./cmd
+FROM node:23-alpine3.20
 
-FROM gcr.io/distroless/base-debian12
-COPY --from=builder /app /app
-EXPOSE 8080
-ENTRYPOINT ["/app"]
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+
+# 本番ビルドは不要：開発ではts-node-devを使う
+EXPOSE 4000
+
+CMD ["npx", "ts-node-dev", "--respawn", "src/index.ts"]

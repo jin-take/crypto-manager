@@ -1,39 +1,69 @@
-# Crypto Manager
-仮想通貨関連の管理をするためのシステム
+# Crypto-manager
 
-## QuickStart
+環境:
+- React + Node.js (Express) + MySQL
+ブロックチェーン上のアドレス残高を取得・保存・表示するアプリ
 
-```shell
-$ cd frontend
-$ cp .env.sample .env
+## 🚀 Quickstart
+
+以下の方法でローカル環境で立ち上げられます。
+
+### 前提条件
+
+- [Docker](https://www.docker.com/) / Docker Compose がインストールされていること
+
+---
+
+### 起動手順
+
+1. **このリポジトリをクローン**
+
+```bash
+git clone git@github.com:jin-take/crypto-manager.git
+cd crypto-manager
 ```
 
-### Docker
-```shell
-# Build App by Docker
-$ docker compose build
-$ docker compose up -d
+2. **Docker コンテナをビルド & 起動**
+
+```bash
+docker-compose up --build
 ```
 
-### Local
-```shell
+3. **ブラウザでフロントエンドにアクセス**
 
+```txt
+http://localhost:3000
 ```
 
+---
 
-## Environment
-You can show the Language version on `.mise.toml` file. 
+### 🐬 MySQL情報
 
-```shell
-# Frontend
-"react": "^19.1.0"
-"node": "23.11.0"
-- npm
+- ホスト: `localhost`（Docker内部では `db`）
+- ポート: `3306`
+- DB名: `crypto-manager`
+- ユーザー: `root`
+- パスワード: `root`
 
-# Backend
+→ workbenchやsequel aceで動作確認済み
 
-go = "1.24.2"
-- Gorm
+---
 
-# Database
-"postgresql": ""
+### 🧪 API 確認用エンドポイント
+
+APIは Express ベースで以下のようにアクセス可能です：
+
+```bash
+GET http://localhost:4000/api/balance/:address
+```
+
+---
+
+### 📁 各ディレクトリの役割
+
+| ディレクトリ | 説明 |
+|--------------|------|
+| `frontend/` | ReactベースのUIアプリ |
+| `backend/`  | Node.js + Express + TypeScriptのAPIサーバー |
+| `db` (Docker) | MySQL 9 コンテナによるデータベース |
+
